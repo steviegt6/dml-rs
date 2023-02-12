@@ -12,6 +12,10 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
 }
 
+// Define _fltused and _DllMainCRTStartup to avoid linking errors,
+// Enabling no_std seems to expect _DllMainCRTStartup and _fltused instead of
+// just DllMain, so yeah.
+
 #[used]
 #[no_mangle]
 static _fltused: i32 = 0;
