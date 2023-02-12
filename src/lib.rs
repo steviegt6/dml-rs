@@ -5,6 +5,8 @@ extern crate winapi;
 use winapi::shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE};
 use winapi::shared::windef::RECT;
 
+// https://github.com/rust-lang/rust-analyzer/issues/4490#issuecomment-1074922003
+#[cfg(not(test))]
 #[panic_handler]
 fn panic(_info: &core::panic::PanicInfo) -> ! {
     loop {}
