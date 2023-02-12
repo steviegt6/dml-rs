@@ -15,6 +15,7 @@ fn panic(_info: &core::panic::PanicInfo) -> ! {
 // Define _fltused and _DllMainCRTStartup to avoid linking errors,
 // Enabling no_std seems to expect _DllMainCRTStartup and _fltused instead of
 // just DllMain, so yeah.
+// Relevant: https://github.com/Trantect/win_driver_example/issues/4
 
 #[used]
 #[no_mangle]
