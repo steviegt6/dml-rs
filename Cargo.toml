@@ -1,10 +1,16 @@
 [package]
 name = "dml-rs"
 version = "0.1.0"
-edition = "2021"
+edition = "2018"
 
 [lib]
 crate_type = ["cdylib"]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
 
 [target.'cfg(windows)'.dependencies]
 winapi = { version = "0.3", features = ["winuser"] }

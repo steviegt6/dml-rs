@@ -1,11 +1,24 @@
+#![no_main]
 #![no_std]
+#![windows_subsystem = "windows"]
+#[cfg(windows)]
+extern crate winapi;
 
 use winapi::shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE};
 use winapi::shared::windef::RECT;
 
+#[panic_handler]
+fn panic(_info: &core::panic::PanicInfo) -> ! {
+    loop {}
+}
+
+#[used]
+#[no_mangle]
+static _fltused: i32 = 0;
+
 #[no_mangle]
 #[allow(non_snake_case)]
-pub unsafe extern "system" fn DllMain(
+pub extern "system" fn _DllMainCRTStartup(
     _module: HINSTANCE,
     _call_reason: DWORD,
     _reserved: LPVOID,
