@@ -33,7 +33,3 @@ pub extern "C" fn display_mouse_unlock() {
         winapi::um::winuser::ClipCursor(0 as *const RECT);
     }
 }
-
-/*fn lpcwstr(s: &str) -> *const u16 {
-    s.encode_utf16().chain(Some(0)).collect::<Vec<_>>().as_ptr()
-}*/
