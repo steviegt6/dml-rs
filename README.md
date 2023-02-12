@@ -22,9 +22,9 @@ cargo build --release
 
 ## For In-Production Games
 
-1. Download the latest release from the [releases page]().
-2. Copy the `libdml.dll` file to your game's directory.
-3. Rename `libdml.dll` to `display_mouse_lock_x64.dll` or whatever the name of the original DLL is.
+1. Download the latest release from the [releases page](https://github.com/steviegt6/dml-rs/releases).
+2. Copy the `dml_rs.dll` file to your game's directory.
+3. Rename `dml_rs.dll` to `display_mouse_lock_x64.dll` or whatever the name of the original DLL is.
 
 ## For In-Development Games
 
