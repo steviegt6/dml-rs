@@ -22,7 +22,6 @@ pub extern "C" fn display_mouse_lock(x: f64, y: f64, width: f64, height: f64) {
         bottom: (y + height) as i32,
     };
 
-    // so sad unsafe
     unsafe {
         winapi::um::winuser::ClipCursor(&mut rect);
     }
@@ -30,7 +29,6 @@ pub extern "C" fn display_mouse_lock(x: f64, y: f64, width: f64, height: f64) {
 
 #[no_mangle]
 pub extern "C" fn display_mouse_unlock() {
-    // so sad unsafe
     unsafe {
         winapi::um::winuser::ClipCursor(0 as *const RECT);
     }
