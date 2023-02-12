@@ -4,6 +4,14 @@
 
 Free, open-source reimplementation of `display_mouse_lock` ([Native Mouse Lock](https://marketplace.yoyogames.com/assets/9857/native-mouse-lock)) in Rust. Written because I felt like it. And because it was easy.
 
+# Notes
+
+- Considerably smaller binary - 3 kilobytes as opposed to 90 kilobytes.
+- Lack of `display_mouse_bounds` support.
+  - Low priority as it is not used in [HoloCure](https://kay-yu.itch.io/holocure), which is what I wrote this for.
+- No \*nix support.
+  - AFAIK, Native Mouse Lock is Windows-only as well, but I'd like to support \*nix at some point. Feel free to PR.
+
 # Building
 
 ## Requirements
