@@ -1,4 +1,6 @@
 use winapi::shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE};
+use winapi::shared::windef::RECT;
+use winapi::um::winuser::MessageBoxW;
 
 #[no_mangle]
 #[allow(non_snake_case)]
@@ -8,4 +10,37 @@ pub unsafe extern "system" fn DllMain(
     _reserved: LPVOID,
 ) -> BOOL {
     TRUE
+}
+
+// export visible function to be called from c
+#[no_mangle]
+pub extern "C" fn display_mouse_lock(win_x: f64, win_y: f64, win_width: f64, win_height: f64) {
+    // display params in messagebox
+    unsafe {
+        MessageBoxW(
+            std::ptr::null_mut(),
+            lpcwstr(
+                format!(
+                    "x: {}, y: {}, width: {}, height: {}",
+                    win_x, win_y, win_width, win_height
+                )
+                .as_str(),
+            ),
+            lpcwstr("Mouse Lock"),
+            0,
+        );
+    }
+    unsafe {
+        let mut rect = RECT {
+            left: win_x as i32,
+            top: win_y as i32,
+            right: (win_x + win_width) as i32,
+            bottom: (win_y + win_height) as i32,
+        };
+        winapi::um::winuser::ClipCursor(&mut rect);
+    }
+}
+
+fn lpcwstr(s: &str) -> *const u16 {
+    s.encode_utf16().chain(Some(0)).collect::<Vec<_>>().as_ptr()
 }
