@@ -1,6 +1,4 @@
-#![no_main]
 #![no_std]
-#![windows_subsystem = "windows"]
 #[cfg(windows)]
 extern crate winapi;
 
