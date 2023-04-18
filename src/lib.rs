@@ -34,7 +34,7 @@ pub extern "system" fn _DllMainCRTStartup(
 }
 
 #[no_mangle]
-pub extern "C" fn display_mouse_lock(x: f64, y: f64, width: f64, height: f64) {
+pub unsafe extern "C" fn display_mouse_lock(x: f64, y: f64, width: f64, height: f64) {
     let mut rect = RECT {
         left: x as i32,
         top: y as i32,
@@ -42,14 +42,10 @@ pub extern "C" fn display_mouse_lock(x: f64, y: f64, width: f64, height: f64) {
         bottom: (y + height) as i32,
     };
 
-    unsafe {
-        winapi::um::winuser::ClipCursor(&mut rect);
-    }
+    winapi::um::winuser::ClipCursor(&mut rect);
 }
 
 #[no_mangle]
-pub extern "C" fn display_mouse_unlock() {
-    unsafe {
-        winapi::um::winuser::ClipCursor(0 as *const RECT);
-    }
+pub unsafe extern "C" fn display_mouse_unlock() {
+    winapi::um::winuser::ClipCursor(0 as *const RECT);
 }
