@@ -1,4 +1,6 @@
 #![no_std]
+#![no_main]
+
 #[cfg(windows)]
 extern crate winapi;
 
