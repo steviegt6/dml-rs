@@ -6,7 +6,7 @@ Free, open-source reimplementation of `display_mouse_lock` ([Native Mouse Lock](
 
 # Notes
 
-- Considerably smaller binary (36 times small) - 2,560 bytes (2.50 kilobytes) as opposed to 92,160 bytes (90.0 kilobytes).
+- Considerably smaller binary (36 times smaller) - 2,560 bytes (2.50 kilobytes) as opposed to 92,160 bytes (90.0 kilobytes).
 - Lack of `display_mouse_bounds` support.
   - Low priority as it is not used in [HoloCure](https://kay-yu.itch.io/holocure), which is what I wrote this for.
 - No \*nix support.
